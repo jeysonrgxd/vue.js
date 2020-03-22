@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <div id="app">
+      <!-- valores dinamicos con directiva v-bind: -->
+      <img v-bind:src="img" v-bind:title="tema">
+
+      <p><strong>{{name}}</strong></p>
+
+      <!-- directivas tipo condicionales -->
+      <h2>{{ tema }}
+         <span v-if="changePorcent > 0">👍</span>
+         <span v-else-if="changePorcent < 0">👎</span>
+         <span v-else>🤞</span>
+   
+         <span v-show="changePorcent > 0">👍</span>
+         <span v-show ="changePorcent == 0">🤞</span>
+         <span v-show ="changePorcent < 0">👎</span>
+
+      </h2>
+
+      <!-- directivas tipo bucles for para arreglo y arreglos de objetos -->
+      <h2>Listas de precios del Bitcoin</h2>
+      <ul>
+         <li v-for="(price, indice) in prices" v-bind:key="price">
+           {{ indice }} - {{ price }}
+         </li>
+      </ul>
+
+      <h2>Listas de precios con dias del Bitcoin</h2>
+      <ul>
+         <li v-for="(price, indice) in pricesWhitDays" v-bind:key = price.day>
+           {{ indice }} : {{ price.day }} - {{ price.value }}
+         </li>
+      </ul>
+
+   </div>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script type="text/javascript" src="./app.js" ></script>
+</body>
+</html>
