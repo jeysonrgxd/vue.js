@@ -1,11 +1,12 @@
 let myapp = new Vue({
    el:"#app",
-   // esta funcion del objeto vue devuelve las propiedades que utilizaremos en las expresiones del htl
+   // esta funcion del objeto vue devuelve las propiedades que utilizaremos en las expresiones del html
    // dos formas investigar luego
 
    // data:{
    //    name:"jeyson"
    // }
+  
    data(){
       return {
          name:"jeyson gino",
@@ -21,9 +22,18 @@ let myapp = new Vue({
             {day: "viernes", value:9400},
             {day: "sabado", value:10000},
             {day: "domingo", value:10200}
-         ]
-
+         ],
+         showPrices: false
+         
+         
       }
-   }
+   },
+   methods: {
+      // estas funciones se pueden usar en diferentes contextos pero principal mente se van a utilizar para atacharse alos eventos que pueden ser disparados por las vistas 
+      toggleShowPrices() {
+         // 
+         this.showPrices = !this.showPrices
+      }
+   } 
 })
 
