@@ -35,6 +35,8 @@
 
       <!-- directivas tipo bucles for para arreglo y arreglos de objetos -->
       <h2>Listas de precios del Bitcoin</h2>
+
+      <!-- como si fuera una condicional if(valor) ps esto se cumple ya que es verdadero lo mismo hacemos en esta directiva v-show lo cula me mostrara si es verdadero esa variable showPrices declarada en vue de app.js y que podemos alterarla mediante eventos o como queramos-->
       <ul v-show="showPrices">
          <li v-for="(price, indice) in prices" v-bind:key="price">
            {{ indice }} - {{ price }}
