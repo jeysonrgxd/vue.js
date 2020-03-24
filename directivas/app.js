@@ -13,6 +13,9 @@ let myapp = new Vue({
          tema:"Bitcoin",
          img:"https://cryptologos.cc/logos/bitcoin-btc-logo.png",
          changePorcent:1,
+         relative:"relative",
+         priceDay:8400,
+         fondoCont: "f4f4f4",
          prices: [8400, 7900, 8200, 9000, 9400, 10000, 10200],
          pricesWhitDays:[
             {day:"lunes", value:8400},
@@ -33,6 +36,7 @@ let myapp = new Vue({
       toggleShowPrices() {
          // 
          this.showPrices = !this.showPrices
+         this.fondoCont = this.fondoCont.split("").reverse().join("")
       }
    } 
 })

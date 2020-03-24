@@ -15,3 +15,11 @@
     
  - #### v-on : 
    directiva que sirve para escuchar eventos del DOM, tales como onclick, onmouseover, mouseout, entre otros, para ejecutar alguna función.
+
+### Clases y stylos en tiempo real
+
+- ### v-bind:class:
+   podemos modificar dinamica mente el valor de la propiedad class de una elemento html a travez de la directiva v-bind:class="......" en el podemos poner validaciones como operadores ternarios o objetos clave valor donde la clave es la clase que se le asignara si el valor se cumple (clave = clase, valor = condicion)
+
+- ### v-bind:style:
+   podemos tambien definir estylos dinamicos que cambien en tiempo real por la interaccion de algun elemento o usuario

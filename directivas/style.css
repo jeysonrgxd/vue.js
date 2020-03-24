@@ -5,6 +5,10 @@
    min-height: 800px;
 }
 
+.fontbold{
+   font-weight: bold;
+}
+
 .green {
    color: seagreen;
 }

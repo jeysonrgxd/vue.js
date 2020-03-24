@@ -7,7 +7,12 @@
    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-   <div id="app">
+   <!-- definiendo stylos dinamicon con v-bind:style="...." -->
+   <!-- recordar que dentro de las llaves { clave:valor } por mas que se paresca a la agregacion de estylos tradicionales no lo es el valor puede ser una variable que tiene que estar declarada en myapp-->
+   <div 
+      
+      v-bind:style = "{background: '#' + fondoCont, position:relative}"
+      id="app">
       <!-- valores dinamicos con directiva v-bind: -->
       <img
          v-on:mouseenter = "toggleShowPrices" 
@@ -38,14 +43,22 @@
 
       <!-- como si fuera una condicional if(valor) ps esto se cumple ya que es verdadero lo mismo hacemos en esta directiva v-show lo cula me mostrara si es verdadero esa variable showPrices declarada en vue de app.js y que podemos alterarla mediante eventos o como queramos-->
       <ul v-show="showPrices">
-         <li v-for="(price, indice) in prices" v-bind:key="price">
+         <li
+            class="fontbold"
+            v-bind:class='priceDay > price ? "green" : "red"' 
+            v-for="(price, indice) in prices" 
+            v-bind:key="price">
            {{ indice }} - {{ price }}
          </li>
       </ul>
 
       <h2>Listas de precios con dias del Bitcoin</h2>
       <ul>
-         <li v-for="(price, indice) in pricesWhitDays" v-bind:key = price.day>
+         <li
+            class="uppercase fontbold"
+            v-bind:class="{orange: priceDay === price.value, red : priceDay < price.value, green: priceDay > price.value}" 
+            v-for="(price, indice) in pricesWhitDays" 
+            v-bind:key = price.day>
            {{ indice }} : {{ price.day }} - {{ price.value }}
          </li>
       </ul>
