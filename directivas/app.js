@@ -10,11 +10,13 @@ let myapp = new Vue({
    data(){
       return {
          name:"jeyson gino",
+         symbol:'BTC',
          tema:"Bitcoin",
          img:"https://cryptologos.cc/logos/bitcoin-btc-logo.png",
          changePorcent:1,
          relative:"relative",
          priceDay:8400,
+         value:0,
          fondoCont: "f4f4f4",
          prices: [8400, 7900, 8200, 9000, 9400, 10000, 10200],
          pricesWhitDays:[
@@ -31,6 +33,26 @@ let myapp = new Vue({
          
       }
    },
+
+   computed:{
+      title(){
+         return `${this.tema} - ${this.symbol}`
+      },
+      convertedValue(){
+         if(!this.value){
+            return this.value
+         }
+         return this.value / this.priceDay
+      }
+   },
+
+   watch:{
+      showPrices(newVal, oldVal){
+         console.log(newVal, oldVal)
+      }
+
+   },
+
    methods: {
       // estas funciones se pueden usar en diferentes contextos pero principal mente se van a utilizar para atacharse alos eventos que pueden ser disparados por las vistas 
       toggleShowPrices() {

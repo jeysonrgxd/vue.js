@@ -22,8 +22,16 @@
 
       <p><strong>{{name}}</strong></p>
 
+      <!-- Two-way data binding -->
+      <input type="number"  v-model="value"><br>
+      <span>valor entrante : <strong> {{ value }} </strong></span><br>
+      <span>Precio convertido del BTC : <strong> {{ convertedValue }} </strong></span>
+
+
       <!-- directivas tipo condicionales -->
-      <h2>{{ tema }}
+      <h2>
+         <!-- propiedad computada que se forma me diante las propiedades tema y symbol dando paso auna propiedad nueva que cambiara si lo hacen las ya mencionada, solo se pone el nombre de la funcion -->
+         {{ title }}
          <span v-if="changePorcent > 0">👍</span>
          <span v-else-if="changePorcent < 0">👎</span>
          <span v-else>🤞</span>

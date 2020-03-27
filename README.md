@@ -23,3 +23,20 @@
 
 - ### v-bind:style:
    podemos tambien definir estylos dinamicos que cambien en tiempo real por la interaccion de algun elemento o usuario
+
+
+### Computed Properties y Watchers
+
+- ### Propiedades computadas (Computed):
+   propiedades que se calculan en tiempo real en base a los valores de otras propiedades.
+
+- ### Watcher:
+   Tienen que tener cada funcion el mismo nombre de la variable al cual se verificara algun cambio, son Funciones que ejecutan un código es decir que por medio de un cambio de la observación de una variable se puede disparar determinado código o ejecutar una función. (Podemos pensarlo como un Disparador de código.)
+
+### Two-way data binding
+   (enlace de datos bidireccional)
+
+- ### v-model:
+   permite que cada vez que cambio la vista atravez con interacciones con el usuario e refresque el codigo y cada vez que se refresque el codigo tambien se actualize la vista, (esta caracteristica de vue nos permite en palabras cortas manipular la informacion que es ingresada por el usuario)
+
+   ejemplo: linkear las cosas que escribe el usuario en un input de un formulario con las propiedades que tenemos definidas en data.
