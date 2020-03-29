@@ -40,3 +40,13 @@
    permite que cada vez que cambio la vista atravez con interacciones con el usuario e refresque el codigo y cada vez que se refresque el codigo tambien se actualize la vista, (esta caracteristica de vue nos permite en palabras cortas manipular la informacion que es ingresada por el usuario)
 
    ejemplo: linkear las cosas que escribe el usuario en un input de un formulario con las propiedades que tenemos definidas en data.
+
+
+### Sistema de componente
+   mas que todo no ayuda a tener prociones de codigo o componentes para poder utilizarlo donde queramos y asi lograr la reutilizacion y pensar en componentes
+
+- ### Vue.compornent:
+   tiene casi los mismos metodos que la instancia de Vue donde veniamos haciendo todo, nada mas que este tiene el metodo template donde va a ir el “html” de nuestro componente 
+
+- ### Comunicación entre componentes: propiedades
+   cuando creamos la instacia de vue, el contenedor al que vue se basara osea el div con id="app" este tendra dentro un componente que devemos crear, y el cual recivira las propiedades del padre osea de la instacia de vue, para que con esto podamos obtener las variables y agregarlo a nuestro template para usarlo como un componente 

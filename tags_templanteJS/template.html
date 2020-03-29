@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+    <template>
+         <h2>Jeyson</h2>
+         <ul>
+          <li>J</li>
+          <li>E</li>
+          <li>Y</li>
+          <li>S</li>
+          <li>O</li>
+          <li>N</li>
+       </ul>
+    </template>
+    <div class="cont">
+       <p>probar si appendChild se saca tod el contenido pero no <br> lo saca solo innerHTML</p>
+    </div>
+    <button onclick="presion()">Insert</button>
+
+    <script>
+       let mytemp = document.querySelector("template")
+       let cont =  document.querySelector(".cont");
+
+       function presion(){
+          console.log("hola");
+          cont.appendChild(mytemp.content)
+       }
+
+
+
+    </script>
+</body>
+</html>

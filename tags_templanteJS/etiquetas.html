@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <h1 curso = "Vue">Mi primer etiqueta</h1>
+   <nombre firstname = "jeyson">
+      <img src="./gokussj3.png" alt="">
+   </nombre>
+   
+   <script>
+
+      let mytag = document.querySelector("nombre")
+      let h1curso = document.querySelector("h1")
+
+      console.log(mytag.attributes.firstname.value);
+      console.log(h1curso.attributes.curso.value);
+   </script>
+</body>
+</html>
