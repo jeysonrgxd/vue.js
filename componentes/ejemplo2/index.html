@@ -8,55 +8,28 @@
    <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body >
 
-   <div v-bind:style="{background: '#' + fondoCont, position:relative}" id="app">
-      <img v-on:mouseenter="toggleShowPrices" v-on:mouseleave="toggleShowPrices" v-bind:src="img" v-bind:title="tema">
+   <div id="app">
 
-      <!--si queremmos que ese valor sea el del padre tenemos que agregarle v-bind:name="name"  v-bind:(directiva) name(nombre de la propiedad declarada en props del componente) = "nombre"(nombre igual a la propiedad del padre que queremos pasar al componente) -->
-      <coin-detail v-bind:name="name"></coin-detail>
+         <!--si queremmos que ese valor sea el del padre tenemos que agregarle v-bind:name="name"  v-bind:(directiva) name(nombre de la propiedad declarada en props del componente) = "nombre"(nombre igual a la propiedad del padre que queremos pasar al componente) -->
+         <coin-detail
+          v-bind:name="name"
+          v-bind:showPrices="showPrices"
+          v-bind:img="img"
+          v-bind:tema="tema"
+          v-bind:value = "value"
+          v-bind:price-Day = "priceDay"
+          v-bind:symbol = "symbol"
+          v-bind:fondocont = "fondoCont"
+          v-bind:relative = "relative"
+          v-bind:changeporcent = "changePorcent"
+          v-bind:prices = "prices"
+          v-bind:priceswhitdays = "pricesWhitDays"
+          ></coin-detail>
 
-      <input type="number" v-model="value"><br>
-      <span>valor entrante : <strong> {{ value }} </strong></span><br>
-      <span>Precio convertido del BTC : <strong> {{ convertedValue }} </strong></span>
 
-      <h2>
-
-         {{ title }}
-         <span v-if="changePorcent > 0">👍</span>
-         <span v-else-if="changePorcent < 0">👎</span>
-         <span v-else>🤞</span>
-
-         <span v-show="changePorcent > 0">👍</span>
-         <span v-show="changePorcent == 0">🤞</span>
-         <span v-show="changePorcent < 0">👎</span>
-
-         <span v-on:click="toggleShowPrices">
-            {{ showPrices ? "🙉" : "🙈"}}
-         </span>
-
-      </h2>
-
-      <h2>Listas de precios del Bitcoin</h2>
-
-      <ul v-show="showPrices">
-         <li class="fontbold" v-bind:class='priceDay > price ? "green" : "red"' v-for="(price, indice) in prices"
-            v-bind:key="price">
-            {{ indice }} - {{ price }}
-         </li>
-      </ul>
-
-      <h2>Listas de precios con dias del Bitcoin</h2>
-      <ul>
-         <li class="uppercase fontbold"
-            v-bind:class="{orange: priceDay === price.value, red : priceDay < price.value, green: priceDay > price.value}"
-            v-for="(price, indice) in pricesWhitDays" v-bind:key=price.day>
-            {{ indice }} : {{ price.day }} - {{ price.value }}
-         </li>
-      </ul>
-
-   </div>
-
+   </div> 
 
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script type="text/javascript" src="./app.js"></script>

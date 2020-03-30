@@ -1,15 +1,95 @@
 // Las props son atributos personalizados que usted puede registrar en un componente. Cuando se pasa un valor a un atributo prop, se convierte en una propiedad en esa instancia de componente
 
 Vue.component("CoinDetail", {
-   props:['name'],
+
+   // tener encuenta las mayusculas 
+   props: ['name', "showprices", "img", "tema", "value", "priceDay", "symbol", "changeporcent", "prices", "priceswhitdays", "fondocont","relative"],
+
    data(){
       return{
-
+         // para mutar las variables que nos da props debemos crear aqui en data un atributo y asignarle el atributo de prop por medio de this solo asi podemos mutar el valor
+         showPrices: this.showprices,
+         newValue : this.value,
+         fondoTotal : this.fondocont
       }
    },
+// recordar que tenmos que encerrar todo en un div para que entienda que solo es un componente
+
+// rrecordar tambien que tenemos que usar las propiedades de este componente (tambien el de props)
    template : `
+   <div v-bind:style="{background: '#' + fondoTotal, position:relative}">
+
       <p><strong> {{ name }} </strong></p>
+
+      <img v-on:mouseenter="toggleShowPrices" v-on:mouseleave="toggleShowPrices" v-bind:src="img" v-bind:title="tema">
+
+      <br>
+
+      <input type="number" v-model="newValue"><br>
+      <span>valor entrante : <strong> {{ newValue }} </strong></span><br>
+      <span>Precio convertido del BTC : <strong> {{ convertedValue }} </strong></span>
+
+      <h2>
+
+         {{ title }}
+         <span v-if="changeporcent > 0">👍</span>
+         <span v-else-if="changeporcent < 0">👎</span>
+         <span v-else>🤞</span>
+
+         <span v-show="changeporcent > 0">👍</span>
+         <span v-show="changeporcent == 0">🤞</span>
+         <span v-show="changeporcent < 0">👎</span>
+
+         <span v-on:click="toggleShowPrices">
+            {{ showPrices ? "🙉" : "🙈"}}
+         </span>
+
+      </h2>
+
+      <h2>Listas de precios del Bitcoin</h2>
+
+      <ul v-show="showPrices">
+         <li class="fontbold" v-bind:class='priceDay > price ? "green" : "red"' v-for="(price, indice) in prices"
+            v-bind:key="price">
+            {{ indice }} - {{ price }}
+         </li>
+      </ul>
+
+      <h2>Listas de precios con dias del Bitcoin</h2>
+
+      <ul>
+         <li class="uppercase fontbold"
+            v-bind:class="{orange: priceDay === price.value, red : priceDay < price.value, green: priceDay > price.value}"
+            v-for="(price, indice) in priceswhitdays" v-bind:key=price.day>
+            {{ indice }} : {{ price.day }} - {{ price.value }}
+         </li>
+      </ul>
+
+
+   </div>
    `
+   ,
+
+   methods: {
+      toggleShowPrices() {
+         this.showPrices = !this.showPrices
+         console.log(this.changeporcent)
+         this.fondoTotal = this.fondoTotal.split("").reverse().join("")
+         console.log(this.fondoTotal);
+      }
+   },
+
+   computed: {
+      title() {
+         return `${this.tema} - ${this.symbol}`
+      },
+      convertedValue() {
+         if (!this.newValue) {
+            return this.newValue
+         }
+         return parseInt(this.newValue) / parseInt(this.priceDay)
+      }
+   }
    
 
 

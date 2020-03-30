@@ -8,6 +8,9 @@
 
  - la directiva v-for como su nombre lo indica es una directiva q nos permite iterar arreglos simples y arreglos de objetos.
 
+ ### v-bind:
+   Con esta directiva podremos vincular un atributo html (o prop de un componente) a un valor que tenemos en nuestro modelo. Recibe como parámetro el atributo. De esta manera podríamos, por ejemplo, asignar el atributo disabled condicionalmente a un botón.
+
  ### Eventos
 
  - #### methods :
