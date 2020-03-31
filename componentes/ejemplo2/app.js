@@ -29,6 +29,9 @@ Vue.component("CoinDetail", {
       <span>valor entrante : <strong> {{ newValue }} </strong></span><br>
       <span>Precio convertido del BTC : <strong> {{ convertedValue }} </strong></span>
 
+      <slot name="text"></slot>
+      <slot name="link"></slot>
+
       <h2>
 
          {{ title }}
@@ -76,7 +79,12 @@ Vue.component("CoinDetail", {
          console.log(this.changeporcent)
          this.fondoTotal = this.fondoTotal.split("").reverse().join("")
          console.log(this.fondoTotal);
-      }
+
+         // emitimos un evento para interactuar con el padre, con esta funcion podemos indicarle que nuestro componente  tiene que emitir un evento llamado changeColor cadavez que se ejecute este metodo
+         this.$emit('change-color', this.showPrices ? "9399ff" : "")
+      },
+
+
    },
 
    computed: {
@@ -99,6 +107,7 @@ let myapp = new Vue({
    el: "#app",
    data() {
       return {
+         fondopadre: "#434e52",
          name: "jeyson gino",
          symbol: 'BTC',
          tema: "Bitcoin",
@@ -164,9 +173,8 @@ let myapp = new Vue({
    },
 
    methods: {
-      toggleShowPrices() {
-         this.showPrices = !this.showPrices
-         this.fondoCont = this.fondoCont.split("").reverse().join("")
+      updateColor(color) {
+         this.fondopadre = color || this.fondopadre.split("").reverse().join("")
       }
    }
 })

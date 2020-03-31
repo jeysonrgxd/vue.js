@@ -53,3 +53,10 @@
 
 - ### Comunicación entre componentes: propiedades
    cuando creamos la instacia de vue, el contenedor al que vue se basara osea el div con id="app" este tendra dentro un componente que devemos crear, y el cual recivira las propiedades del padre osea de la instacia de vue, para que con esto podamos obtener las variables y agregarlo a nuestro template para usarlo como un componente 
+
+- ### Comunicacion de componente hijo al padre
+   para que un componente hijo intractue con el padre asiendo o pidiendo que ejecute alguna funcion del padre el componente hijo se tiene que comunicar mediante eventos que se ejecutan mediante una interaccion del componente hijo, se utiliza this.$emit('evento-name',valor) esto en el la funcion que se ejecuta a la interracion, y en html devemos utilizar un v-on:evento-name="funcion del padre"
+   en "funcion del padre" tenemos que tener creado en el padre la funcion a ejecutar en methods
+
+- ### Slots
+   Api de distribución de contenido, que permite que un componente padre inyecte html a un componente hijo.
