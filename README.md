@@ -60,3 +60,13 @@
 
 - ### Slots
    Api de distribución de contenido, que permite que un componente padre inyecte html a un componente hijo.
+
+- ### Ciclo de vida y Hooks
+   Vue tiene diferentes estados y esto nos permite usar ciertas acciones antes y después de cada estado.
+   A estas acciones se las conoce como hooks y tienen unos propósitos claros:
+
+- Nos permite conocer como se crea, actualiza y se destruye un componente.
+
+- Podemos saber en que punto se encuentra el componente y poder actuar en consecuencia.
+
+   A continuación vamos a ver los hooks que nos ofrece Vue: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed

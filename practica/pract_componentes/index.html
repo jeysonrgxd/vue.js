@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <div id="app">
+      <button v-on:click="toggleModal">Show Modal</button>
+
+      <modal 
+         v-if="showModal"
+         v-bind:title="titleModal"
+         v-on:close-modal="toggleModal">
+
+         <template v-slot:body>
+            <h2>El señor Modal</h2>
+            <p>Este modal lo iso yo con Vue.js que es una maravilla de framework muy facil de usar y con platzi como la organizacion de estudio y el profe nacho esto es muy divertido y facil de aprender</p>
+
+         </template>
+
+      </modal>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script type="text/javascript" src="./app.js"></script>
+</body>
+</html>

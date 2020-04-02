@@ -72,6 +72,14 @@ Vue.component("CoinDetail", {
    </div>
    `
    ,
+   // funciones hooks de ciclo de vida del componente, con esto podemos por ejemplo solicitar a una api informacion cuando es creado el componente
+   created() {
+      console.log("Hijo Created....")
+
+   },
+   mounted() {
+      console.log("Hijo atachable....");
+   },
 
    methods: {
       toggleShowPrices() {
@@ -170,6 +178,14 @@ let myapp = new Vue({
          console.log(newVal, oldVal)
       }
 
+   },
+
+   created(){
+      console.log("Padre Created....")
+
+   },
+   mounted(){
+      console.log("Padre atachable....");
    },
 
    methods: {
