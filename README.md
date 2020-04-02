@@ -70,3 +70,26 @@
 - Podemos saber en que punto se encuentra el componente y poder actuar en consecuencia.
 
    A continuación vamos a ver los hooks que nos ofrece Vue: beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed
+
+
+ ### VS Code + Vetur / Chrome / Firefox + DevTools
+
+   estos son erramientas de desarrollo que nos ayudaran para el desarrollo de nuestras aplicaciones con vue, los siguientes son enlaces para descargar lo indicado en el curso:
+
+- Link para descarga node [Download Node.js](https://nodejs.org/es/)   
+- Link para descarga VSCode [Download VSCode](https://code.visualstudio.com/)   
+- Extencion de VSCode Vetur [EXT: Vetur](https://github.com/vuejs/vetur)   
+- Extencion de VSCode ESLint [EXT: ESlint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)   
+- Extencion de VSCode Prettier [EXT: Prettier](https://prettier.io/)   
+- Chrome DevTools [Extencion Google](https://github.com/vuejs/vue-devtools)
+
+
+### VUE CLI
+
+   La “interfaz de línea de comandos Vue” VUE CLI es una herramienta creada por el equipo Vue.js para ayudar a facilitar el rápido desarrollo de las aplicaciones Vue.
+
+   [Vue Cli](https://cli.vuejs.org/)
+
+   Si bien puede usar Vue.js en el navegador directamente, la mayoría de las aplicaciones frontales usan Node.js para las herramientas de compilación.
+
+- comando basico de creacion de entorno de desarrollo con vue : ``` vue create name_project ```

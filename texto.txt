@@ -1,1 +1,3 @@
 en pascal case js y  kevis case en html
+comandos de vue cli
+- para crear un proyectoo :  vue create platzi-exchange
