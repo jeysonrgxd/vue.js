@@ -106,4 +106,4 @@
 
 - una vez instalado el serve este comando levanta un localhost del dist ``` serve -s dist ```
 
-- Genera una aplicación web local, que mediante una interfaz de usuario permite gestionar los proyectos de Vue. preset. A medida que se van creando proyectos con determinada configuración, el cli de vue permite guardar esa configuración para más adelante poder utilizarla al momento de crear un proyecto: ``` vue ui ```
+- Genera una aplicación web local, que mediante una interfaz de usuario permite gestionar los proyectos de Vue:  ``` vue ui ```
