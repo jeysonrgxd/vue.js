@@ -1,17 +1,23 @@
 <template>
-  <div id="app" class="bg-blue-400">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Bienvenido a mi primera app en Vue.js App" />
-  </div>
+  <main>
+    <!-- kybas keys -->
+    <px-header></px-header>
+    <px-assets-table></px-assets-table>
+  </main>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// importamos los componentes que utilizaremos
+import PxHeader from "@/components/PxHeader"
+import PxAssetsTable from "@/components/PxAssetsTable"
 
 export default {
   name: "App",
+
+  // pacas keys
   components: {
-    HelloWorld
+    PxHeader,
+    PxAssetsTable
   }
 };
 </script>
