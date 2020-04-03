@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Tailwind css instalar mediante vue cli
+```
+vue add@ianaya89/tailwind
+```
