@@ -28,3 +28,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 vue add@ianaya89/tailwind
 ```
+
+### Vue Raute

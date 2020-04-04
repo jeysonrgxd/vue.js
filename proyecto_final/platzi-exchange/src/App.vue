@@ -2,22 +2,24 @@
   <main>
     <!-- kybas keys -->
     <px-header></px-header>
-    <px-assets-table></px-assets-table>
+
+    <!-- removemos el componente que pusimos para poner un componente que nos da vue roter -->
+    <router-view class="container px-5 sm:px-20 py-20 flex justify-center"></router-view>
   </main>
 </template>
 
 <script>
 // importamos los componentes que utilizaremos
 import PxHeader from "@/components/PxHeader"
-import PxAssetsTable from "@/components/PxAssetsTable"
+
 
 export default {
   name: "App",
-
+  
   // pacas keys
   components: {
     PxHeader,
-    PxAssetsTable
+
   }
 };
 </script>
