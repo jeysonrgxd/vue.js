@@ -9,6 +9,13 @@ import "@/assets/css/tailwind.css"
 // traemos el rauter creado para agregarlo a la instacia de Vue la que es la que maneja todo
 import router from '@/router'
 
+// importamos los filtros que tendra la vista
+import { dollaFilter, percentFilter } from '@/filters.js'
+
+// utilizamos el metodo filter de vue
+Vue.filter('dollar', dollaFilter)
+Vue.filter('percent', percentFilter)
+
 Vue.config.productionTip = false;
 
 new Vue({ 

@@ -20,7 +20,9 @@
       :key="a.id"
       >
         <td>
-          <img :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`" :alt="a.name"
+          <img 
+          class="w-8 h-8"
+          :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`" :alt="a.name"
           >
         </td>
         <td>
@@ -30,12 +32,14 @@
           {{ a.name }}
         </td>
         <td>
-          {{ a.priceUsd }}  
+          {{ a.priceUsd | dollar}}  
         </td>
         <td>
           {{ a.marketCapUsd }}
         </td>
-        <td>{{ a.changePercent24Hr }}</td>
+        <td
+          :class="a.changePercent24Hr.includes('-') ? 'text-red-600' : 'text-green-600'"
+        >{{ a.changePercent24Hr | percent }}</td>
         <td class="hidden sm:block"></td>
       </tr>
     </tbody>
@@ -82,9 +86,9 @@ th {
   font-size: 0.6rem;
 }
 /* para agregar la imagen del dragon */
-img{
+/* img{
   height: 64px;
-}
+} */
 
 @media (min-width: 640px) {
   td,
