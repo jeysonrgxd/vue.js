@@ -32,5 +32,5 @@ vue add@ianaya89/tailwind
 ### Vue Raute
 
 ````
-npm i -S vue-roter
+npm i -S vue-roter 
 ```

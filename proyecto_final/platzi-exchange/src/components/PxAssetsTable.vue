@@ -14,13 +14,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <!-- hacemos un v-for para llenar el contenido de la table de acuerdo a la variable assets que el componente home no da y que lo obtenemos con el props d ela configuracion de este componente -->
+      <tr class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
+      v-for="a in assets"
+      :key="a.id"
+      >
+        <td>
+          <img :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`" :alt="a.name"
+          >
+        </td>
+        <td>
+          # {{ a.rank }}
+        </td>
+        <td>
+          {{ a.name }}
+        </td>
+        <td>
+          {{ a.priceUsd }}  
+        </td>
+        <td>
+          {{ a.marketCapUsd }}
+        </td>
+        <td>{{ a.changePercent24Hr }}</td>
         <td class="hidden sm:block"></td>
       </tr>
     </tbody>
@@ -28,8 +43,11 @@
 </template>
 
 <script>
+
+
 export default {
    name:"PxAssetsTable",
+   
    // definimos un propiedad en este caso assets para recivir registro que nos mande la api por medio del componente padre
    props:{
       assets:{
@@ -62,6 +80,10 @@ td {
 th {
   padding: 5px;
   font-size: 0.6rem;
+}
+/* para agregar la imagen del dragon */
+img{
+  height: 64px;
 }
 
 @media (min-width: 640px) {
