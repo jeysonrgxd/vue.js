@@ -1,6 +1,10 @@
 # platzi-exchange
 
-## Project setup
+### Cosas a tomar en cuenta
+
+- la carpeta components es mas que todo para la reutilizacion de componentes de vue, y las views es mas que todos para el router y asignar a cada ruta una vista componente de vue
+
+## Project setup 
 ```
 npm install
 ```
