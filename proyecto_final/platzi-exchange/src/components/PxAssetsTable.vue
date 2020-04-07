@@ -15,31 +15,39 @@
     </thead>
     <tbody>
       <!-- hacemos un v-for para llenar el contenido de la table de acuerdo a la variable assets que el componente home no da y que lo obtenemos con el props d ela configuracion de este componente -->
-      <tr class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
-      v-for="a in assets"
-      :key="a.id"
+      <tr
+        class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
+        v-for="a in assets"
+        :key="a.id"
       >
         <td>
-          <img 
-          class="w-8 h-8"
-          :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`" :alt="a.name"
-          >
+          <img
+            class="w-8 h-8"
+            :src="
+              `https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`
+            "
+            :alt="a.name"
+          />
         </td>
-        <td>
-          # {{ a.rank }}
-        </td>
+        <td># {{ a.rank }}</td>
         <td>
           {{ a.name }}
         </td>
         <td>
-          {{ a.priceUsd | dollar}}  
+          {{ a.priceUsd | dollar }}
         </td>
         <td>
           {{ a.marketCapUsd }}
         </td>
         <td
-          :class="a.changePercent24Hr.includes('-') ? 'text-red-600' : 'text-green-600'"
-        >{{ a.changePercent24Hr | percent }}</td>
+          :class="
+            a.changePercent24Hr.includes('-')
+              ? 'text-red-600'
+              : 'text-green-600'
+          "
+        >
+          {{ a.changePercent24Hr | percent }}
+        </td>
         <td class="hidden sm:block"></td>
       </tr>
     </tbody>
@@ -47,21 +55,19 @@
 </template>
 
 <script>
-
-
 export default {
-   name:"PxAssetsTable",
-   
-   // definimos un propiedad en este caso assets para recivir registro que nos mande la api por medio del componente padre
-   props:{
-      assets:{
-         type:Array,
-         // para objeto o array debemos definir una funcion que devuelva objeto o array
-         // si es otro dato como string boolean ponerlo sin una funcion solo : "string", :boolean
-         default: () => [] 
-      }
-   }
-}
+  name: "PxAssetsTable",
+
+  // definimos un propiedad en este caso assets para recivir registro que nos mande la api por medio del componente padre
+  props: {
+    assets: {
+      type: Array,
+      // para objeto o array debemos definir una funcion que devuelva objeto o array
+      // si es otro dato como string boolean ponerlo sin una funcion solo : "string", :boolean
+      default: () => []
+    }
+  }
+};
 </script>
 
 <style scope>
