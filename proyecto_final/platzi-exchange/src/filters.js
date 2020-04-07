@@ -16,3 +16,6 @@ export const percentFilter = function(value){
    return `${Number(value).toFixed(2)}%`
 }
 
+
+
+

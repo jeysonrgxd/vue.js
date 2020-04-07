@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // importamos lo componentes que variaran mediante las rutas
 import Home from '@/views/Home'
 import About from '@/views/About'
+import CoinDetail from '@/views/CoinDetail'
 import error from '@/views/Error'
 
 // funcion que nos permite instalar plugin o incorporar plugin, es use lo que nos permite ir agregando nuevs cosas que nesesitemos y de ahi viene el framework progresivo
@@ -24,6 +25,11 @@ export default new Router({
          path:'/about',
          name:'about',
          component:About
+      },
+      {
+         path:'/coin/:id',
+         name:'coin-detail',
+         component:CoinDetail
       },
       {
          path:'*',
