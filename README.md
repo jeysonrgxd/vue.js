@@ -107,3 +107,7 @@
 - una vez instalado el serve este comando levanta un localhost del dist ``` serve -s dist ```
 
 - Genera una aplicación web local, que mediante una interfaz de usuario permite gestionar los proyectos de Vue:  ``` vue ui ```
+
+### Filtros
+
+   Utilidad de Vue.js que nos permite modificar el valor de la vista de una propiedad sin modificar el valor de la propiedad. Permite formatear algún valor para mostrar en la interfaz de usuario. ```` vue.filter() ```

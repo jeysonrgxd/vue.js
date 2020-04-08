@@ -28,15 +28,15 @@
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio mas bajo</b>
-              <span></span>
+              <span>{{ min | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio mas alto</b>
-              <span></span>
+              <span>{{ max | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio Promedio</b>
-              <span></span>
+              <span>{{ avg |dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Variacion 24hs</b>
@@ -83,12 +83,21 @@ export default {
     };
   },
 
-  computed: {
-    // min() {},
+  computed: { 
+    min() {
+      // este codigo ...this.history.map(e => e.priceUsd) devuelve un array con todos los precios de los objetos para asi poder trabajar con el Math.min
+      return Math.min(...this.history.map(e => parseFloat(e.priceUsd).toFixed(2)))
+    },
 
-    // max() {},
+    max() {
+      return Math.max(...this.history.map(e => parseFloat(e.priceUsd).toFixed(2)))
+    },
 
-    // avg() {}
+    avg() {
+      let listnum = this.history.map(e => parseFloat(e.priceUsd))
+      let sumlist = listnum.reduce((previous,current) => previous+current)
+      return sumlist/listnum.length
+    }
   },
   // usamos el hook para traer datos de la api y ponerlas en la variable de clase assets
   created() {
