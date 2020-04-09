@@ -35,6 +35,12 @@ vue add@ianaya89/tailwind
 
 ### Vue Raute
 
-````
+```
 npm i -S vue-roter 
 ```
+
+### Integracion de componentes de terceros
+
+- spinner loader : ``` npm install --save @saeris/vue-spinners ```
+
+

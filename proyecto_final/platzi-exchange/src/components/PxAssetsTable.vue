@@ -31,7 +31,14 @@
         </td>
         <td># {{ a.rank }}</td>
         <td>
-          {{ a.name }}
+          <router-link 
+            class="hover:underline text-green-600"
+            :to="{name:'coin-detail', params:{id:a.id} }">
+            {{ a.name }}
+          </router-link>
+          <small class="ml-1 text-gray-500">
+            {{ a.symbol}}
+          </small>
         </td>
         <td>
           {{ a.priceUsd | dollar }}
@@ -48,15 +55,25 @@
         >
           {{ a.changePercent24Hr | percent }}
         </td>
-        <td class="hidden sm:block"></td>
+        <td class="hidden sm:block">
+          <px-button
+            @custom-click="goToCoin(a.id)"
+          >
+            <span>Detalle</span>
+          </px-button>
+        </td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import PxButton from '@/components/PxButton'
 export default {
   name: "PxAssetsTable",
+  components:{
+    PxButton
+  },
 
   // definimos un propiedad en este caso assets para recivir registro que nos mande la api por medio del componente padre
   props: {
@@ -66,7 +83,18 @@ export default {
       // si es otro dato como string boolean ponerlo sin una funcion solo : "string", :boolean
       default: () => []
     }
+  },
+
+  methods:{
+    goToCoin(id){
+      // no es lo mismo que this.route, this.rauter me permite acceder a la instacia del rauter
+      //para poder utilizarlo principalmente para navegar atravez de codigo
+
+      // lo asemos atraves de push seteando la ruta y pasandole el parametro que nesesita la ruta
+      this.$router.push({name: 'coin-detail', params: { id:id } })
+    }
   }
+
 };
 </script>
 

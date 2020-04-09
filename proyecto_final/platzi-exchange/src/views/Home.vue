@@ -1,7 +1,10 @@
 <template>
   <div>
-    <!-- traemos el comonente -->
-    <px-assets-table :assets="assets"></px-assets-table>
+    <!-- utilizamos uno de los template de los snippners -->
+    <bounce-loader :loading = "isloading" :color="'#68d391'" :size="100"   />
+
+    <!-- traemos el componente -->
+    <px-assets-table v-if="!isloading" :assets="assets"></px-assets-table>
   </div>
 </template>
 
@@ -17,6 +20,7 @@ export default {
 
   data() {
     return {
+      isloading:false,
       assets: []
     };
   },
@@ -26,7 +30,10 @@ export default {
   },
   // utilizamos el hook de ciclo de vida de vue.js para traer la data del api coindata
   created() {
-    api.getAssets().then(assets => (this.assets = assets));
-  }
+    this.isloading = true
+    api.getAssets()
+    .then(assets => (this.assets = assets))
+    .finally(() => (this.isloading = false))
+  } 
 };
 </script>

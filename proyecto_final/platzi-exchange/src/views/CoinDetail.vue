@@ -1,6 +1,11 @@
 <template>
   <div class="flex-col">
-    <template :v-if="asset.id">
+    
+    <div class="flex justify-center">
+       <bounce-loader :loading = "isloading" :color="'#68d391'" :size="100"   />
+    </div>
+
+    <template v-if="!isloading">
       <div class="flex flex-col sm:flex-row justify-around items-center">
         <div class="flex flex-col items-center">
           <img
@@ -65,6 +70,15 @@
           <span class="text-xl"></span>
         </div>
       </div>
+
+      <!-- hay muchos template nos podemos fijar en la documentacion de chartkick pero en esta caso usaremos este template -->
+      <line-chart class="my-10" 
+        :colors="['orange']"
+        :min="min"
+        :max="max"
+        :data="history.map(h=>[h.date,parseFloat(h.priceUsd).toFixed(2)])"
+      />
+
     </template>
   </div>
 </template>
@@ -77,6 +91,7 @@ export default {
 
   data() {
     return {
+      isloading:false,
       // creamos una variable de vue para almacenar los datos que nos traere la api en es caso de tipo objeto debido a que la api nos da un json (un objeto)
       asset: {},
       history: []
@@ -107,6 +122,9 @@ export default {
 
   methods: {
     getCoin() {
+
+      this.isloading = true
+
       // esto permite a acceder a tipo de valores de la raute que nos proporciona la url
       const id = this.$route.params.id;
       Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
@@ -114,7 +132,8 @@ export default {
           this.asset = asset;
           this.history = history;
         }
-      );
+      )
+      .finally( () => (this.isloading = false) )
     }
   }
 };
