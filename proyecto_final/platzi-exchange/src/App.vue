@@ -1,7 +1,9 @@
 <template>
   <main>
     <!-- kybas keys -->
-    <px-header></px-header>
+    <px-header
+      :links="links"
+    ></px-header>
 
     <!-- removemos el componente que pusimos para poner un componente que nos da vue roter -->
     <router-view
@@ -16,7 +18,24 @@ import PxHeader from "@/components/PxHeader";
 
 export default {
   name: "App",
-
+  data(){
+    return{
+      links:[
+        {
+          title:'BTC',
+          to:{name:'coin-detail',params:{id:'bitcoin'}}
+        },
+        {
+          title:'ETH',
+          to:{name:'coin-detail',params:{id:'ethereum'}}
+        },
+        {
+          title:'XRP',
+          to:{name:'coin-detail',params:{id:'ripple'}}
+        }
+      ]
+    }
+  },
   // pacas keys
   components: {
     PxHeader

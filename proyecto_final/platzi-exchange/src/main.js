@@ -13,17 +13,17 @@ import router from "@/router";
 import { dollaFilter, percentFilter } from "@/filters.js";
 
 // importamos libreria de terceros
-import Chart from 'chart.js'
-import Chartick from 'vue-chartkick'
-import { VueSpinners } from '@saeris/vue-spinners'
+import Chart from "chart.js";
+import Chartick from "vue-chartkick";
+import { VueSpinners } from "@saeris/vue-spinners";
 
 // utilizamos el metodo filter de vue
 Vue.filter("dollar", dollaFilter);
 Vue.filter("percent", percentFilter);
 
 // le decimmos al vue que use la libreria de terceros
-Vue.use(Chartick.use(Chart))
-Vue.use(VueSpinners)
+Vue.use(Chartick.use(Chart));
+Vue.use(VueSpinners);
 
 Vue.config.productionTip = false;
 

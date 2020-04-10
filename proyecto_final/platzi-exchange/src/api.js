@@ -30,13 +30,13 @@ function getAssetHistory(coin) {
     .then(resp => resp.data);
 }
 
-function getMarkets (coin){
+function getMarkets(coin) {
   return fetch(`${url}assets/${coin}/markets?limit=5`)
     .then(resp => resp.json())
     .then(resp => resp.data);
 }
 
-function getExchange (id){
+function getExchange(id) {
   return fetch(`${url}exchanges/${id}`)
     .then(resp => resp.json())
     .then(resp => resp.data);
