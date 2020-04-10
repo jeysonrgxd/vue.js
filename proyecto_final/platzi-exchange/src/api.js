@@ -30,9 +30,23 @@ function getAssetHistory(coin) {
     .then(resp => resp.data);
 }
 
+function getMarkets (coin){
+  return fetch(`${url}assets/${coin}/markets?limit=5`)
+    .then(resp => resp.json())
+    .then(resp => resp.data);
+}
+
+function getExchange (id){
+  return fetch(`${url}exchanges/${id}`)
+    .then(resp => resp.json())
+    .then(resp => resp.data);
+}
+
 export default {
   getAssets,
   getAsset,
+  getMarkets,
+  getExchange,
   getAssetHistory
 };
 //si hay error se puede tener una propiedad error dentro de data(), y en el catch de la promise que hace la peticion a coincap asignas un valor o mensaje a esa propiedad errro. Luego en tu template usando un v-show o v-if eliges como mostrar el mensaje.

@@ -79,22 +79,52 @@
         :data="history.map(h=>[h.date,parseFloat(h.priceUsd).toFixed(2)])"
       />
 
+      <!-- poner el codigo -->
+
+      <h3 class="text-xl my-10">Mejores Ofertas de Cambio</h3>
+      <table>
+        <!-- asignamos doy llaver de verificacion ya que hay datos con el id mismo pero diferente precio -->
+        <tr v-for="m in markets" :key="`${m.exhangeId}-${m.priceUsd}`" class="border-b">
+          <td>
+            <b>{{ m.exchangeId }}</b>
+          </td>
+          <td>{{ m.priceUsd | dollar }}</td>
+          <td>{{ m.baseSymbol }} / {{ m.quoteSymbol }}</td>
+          <td>
+            <px-button :isloading ="m.isloading" v-if="!m.url" @custom-click ="getWebsite(m)">
+              Obtener Link
+            </px-button>
+
+            <a v-else class="hover:underline text-green-600" target="_blanck">
+              {{ m.url }}
+            </a>
+          </td>
+        </tr>
+      </table>
+
     </template>
   </div>
 </template>
 
 <script>
 import api from "@/api";
+import PxButton from '@/components/PxButton' 
 
 export default {
   name: "CoinDetail",
+
+  components:{
+
+    PxButton
+  },
 
   data() {
     return {
       isloading:false,
       // creamos una variable de vue para almacenar los datos que nos traere la api en es caso de tipo objeto debido a que la api nos da un json (un objeto)
       asset: {},
-      history: []
+      history: [],
+      markets:[]
     };
   },
 
@@ -121,16 +151,29 @@ export default {
   },
 
   methods: {
+
+    getWebsite(exchange){
+
+      this.$set(exchange,'isloading',true)
+      return api.getExchange(exchange.exchangeId)
+      .then(resp => {
+        // esta propiedad no ayuda a poder insertar propiedades despues de que se aya creado el componente ya que si no utilizamos esto vue no crackeara la pripiedad y por ende no tendremos el cambio en tiempo real, para eso se utiliza esto mas que todo en array y objetos
+        this.$set(exchange, 'url', resp.exchangeUrl)
+      })
+      .finally(()=>{ this.$set(exchange,'isloading',false) })
+    },
+
     getCoin() {
 
       this.isloading = true
 
       // esto permite a acceder a tipo de valores de la raute que nos proporciona la url
       const id = this.$route.params.id;
-      Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
-        ([asset, history]) => {
+      Promise.all([api.getAsset(id), api.getAssetHistory(id), api.getMarkets(id)]).then(
+        ([asset, history,markets]) => {
           this.asset = asset;
           this.history = history;
+          this.markets = markets;
         }
       )
       .finally( () => (this.isloading = false) )
