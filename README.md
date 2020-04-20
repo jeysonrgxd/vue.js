@@ -1,4 +1,4 @@
-## CURSO DE VUE.JS
+## CURSO DE VUE.JS Tomado en Platzi
 
  - Casi cualquier tipo de código JS puede ser utilizado dentro de una expresión ( lo que va en el html {{ valor o codigo }} ). Hay cosas que no podríamos hacer: un if, un else, un while, un switch, un for…
 
