@@ -12,13 +12,13 @@
    </style>
 </head>
 <body>
-
    <div id="app">
-      <h1>{{ title }}</h1>
-      <counter></counter>
+      <h3>{{ saludo }}</h3>
+      <button @click="saludo = 'hola jeyson'">Saludar</button>
+      <button @click="destruir()">Destruir</button>
    </div>
 
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-   <script src="./app.js"></script>
+   <script type="text/javascript" src="./app.js"></script>
 </body>
 </html>

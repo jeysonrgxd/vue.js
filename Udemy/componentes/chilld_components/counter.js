@@ -14,7 +14,7 @@ Vue.component("counter", {
 
    },
    // cuando nosotros utilizamos los templates tiene que estar contenido osea en un <div></div>
-   template://html 
+   template: //html 
       `
          <div>
             <button v-on:click="increment"> click me! </button>
@@ -22,16 +22,3 @@ Vue.component("counter", {
          </div>
       `
 })
-
-let myapp = new Vue({
-   el:"#app",
-
-   data(){
-      return {
-         title:"Componente"
-      }
-   }
-})
-
-
-
