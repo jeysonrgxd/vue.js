@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <h2>{{title}}</h2>
+      <padre></padre>
+
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="./padre.js"></script>
+   <script src="./hijo.js"></script>
+   <script>
+      const vue = new Vue({
+         el:"#app",
+         data(){
+            return{
+               title:"Comunicacion entre componentes"
+            }
+         }
+
+      })
+   </script>
+</body>
+</html>
