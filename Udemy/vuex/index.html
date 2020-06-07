@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <h1>{{title}}</h1>
+      <subtitle></subtitle>
+   </div>
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="https://unpkg.com/vuex@3.4.0/dist/vuex.js"></script>
+   <script>
+      // creando componentes
+      Vue.component('subtitle',{
+         template: //html 
+         ` 
+            <div>
+               <h2>Componente Padre</h2>
+               <button @click="aumentar">Aumentar</button>
+               <button @click="disminuir">Disminuir</button>
+               <button @click="resetear">Resetear</button>
+               <button @click="multiplicar(2)">Multiplicar</button>
+               <h2>Numero: {{num}}</h2>
+               <hijo></hijo>
+            </div>
+            
+         `,
+         // computed: {
+         //   ...Vuex.mapState(['num']) 
+         // },
+
+         // le pasamos los nombres de los variables de los estados de nuestra tienda
+         computed: Vuex.mapState(['num']),
+
+         methods: {
+            // le pasamos los nombres de las funciones de mutation de nuestra tienda
+            ...Vuex.mapMutations(['aumentar','disminuir','resetear','multiplicar'])
+         },
+
+         mounted() {
+            console.log(Vuex.mapState(['num']))
+         }
+      })
+
+      Vue.component('hijo',{
+         // recordar que cuando usamos los state de la tienda en el template debemos usar $
+         //y cuando queremos utilizar en los metodos de nuestro componentes no es nesesario 
+         template: //html 
+         `
+            <div>
+               <h2>Componente Hijo</h2>
+               <button @click="$store.commit('aumentar')">Aumentar</button>
+               <button @click="$store.commit('disminuir')">Disminuir</button>
+               <button @click="$store.commit('resetear')">Resetear</button>
+               
+               <!-- esta for pasamos parametros si usamos la forma tradicional -->
+               <button @click="$store.commit('multiplicar',2)">multiplicar</button>
+               
+               <!---<h2>Numero: {{$store.state.num}}</h2>   -->
+               <h2>Numero: {{numero}}</h2>
+
+            </div>
+         `,
+
+         computed: {
+            numero(){
+               return store.state.num
+            }
+         },
+      })
+
+      // importante tiene que estar arriba de new Vue, ya que ira dentro de Vue
+
+      const store = new Vuex.Store({
+         state:{
+            num:0
+         },
+         mutations:{
+            aumentar:state => state.num++,
+
+            disminuir(){
+               this.state.num--
+            },
+
+            resetear(state){
+               state.num = 0
+            },
+
+            multiplicar(state,n){
+               state.num *=n
+            }
+
+         }
+      })
+
+      const vue = new Vue({
+         el:"#app",
+         data(){
+            return{
+               title:"Aprendiendo Vuex"
+            }
+         },
+         // llamamos a store para proporcionar a este componente y alos demas hijos utilizar el store
+         store
+      })
+
+   </script>
+</body>
+</html>
