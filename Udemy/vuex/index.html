@@ -53,6 +53,12 @@
       })
 
       Vue.component('hijo',{
+         data(){
+            return{
+               title:"title"
+            }
+         },
+
          // recordar que cuando usamos los state de la tienda en el template debemos usar $
          //y cuando queremos utilizar en los metodos de nuestro componentes no es nesesario 
          template: //html 
@@ -69,22 +75,41 @@
                <!---<h2>Numero: {{$store.state.num}}</h2>   -->
                <h2>Numero: {{numero}}</h2>
 
+               <!-- bamos a traer data desde una api y la pintaremos -->
+               <button @click="getUsers">Usuarios</button>
+               <ul v-for="user of users" :key="user.id">
+                  <li>Nombre: {{user.first_name}}</li>
+                  <li>Apellido: {{user.last_name}}</li>
+                  <li>E-mail: {{user.email}}</li>
+                  <li><img :src="user.avatar" :title="user.first_name + ' ' + user.last_name"></li>
+               </ul>
+
+
             </div>
          `,
 
          computed: {
             numero(){
                return store.state.num
-            }
+            },
+
+            ...Vuex.mapState(['users'])
          },
+
+         methods:{
+            ...Vuex.mapActions(['getUsers'])
+         }
       })
 
       // importante tiene que estar arriba de new Vue, ya que ira dentro de Vue
 
       const store = new Vuex.Store({
+         // ver siempre el diagrama de la web de https://vuex.vuejs.org/
          state:{
-            num:0
+            num:0,
+            users:[]
          },
+
          mutations:{
             aumentar:state => state.num++,
 
@@ -98,8 +123,20 @@
 
             multiplicar(state,n){
                state.num *=n
+            },
+
+            setUsers(state,data){
+               state.users = data
             }
 
+         },
+
+         actions:{
+            async getUsers({commit}){
+               const data = await fetch('https://reqres.in/api/users?page=1')
+               const resp = await data.json()
+               commit('setUsers',resp.data)
+            }
          }
       })
 
